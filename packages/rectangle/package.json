@@ -1,17 +1,63 @@
-
 {
   "name": "rectangle",
   "version": "0.84",
-  "description": "Move and resize windows using keyboard shortcuts or snap areas",
-  "build_command": "",
-  "install_command": "curl -L https://github.com/rxhanson/Rectangle/releases/download/v0.84/Rectangle0.84.dmg -o rectangle.dmg && hdiutil attach rectangle.dmg && cp -r '/Volumes/Rectangle 0.84/Rectangle.app' /Applications/ && hdiutil detach '/Volumes/Rectangle 0.84'",
-  "uninstall_command": "rm -rf /Applications/Rectangle.app",
-  "dependencies": [],
-  "metadata": {
-    "author": "Ryan Hanson",
-    "license": "MIT",
-    "homepage": "https://github.com/rxhanson/Rectangle",
-    "platform": "macos",
-    "minimum_os": "10.15"
-  }
+  "description": "Window management app for macOS",
+  "platforms": {
+    "macos": {
+      "steps": {
+        "download": {
+          "url": "https://github.com/rxhanson/Rectangle/releases/download/v0.84/Rectangle0.84.dmg",
+          "target": "$PACKAGE_CACHE_DIR/Rectangle.dmg"
+        },
+        "prepare": {
+          "commands": [
+            "hdiutil attach $PACKAGE_CACHE_DIR/Rectangle.dmg"
+          ]
+        },
+        "build": {
+          "commands": []
+        },
+        "install": {
+          "commands": [
+            "cp -R '/Volumes/Rectangle0.84/Rectangle.app' /Applications/"
+          ]
+        },
+        "cleanup": {
+          "commands": [
+            "hdiutil detach '/Volumes/Rectangle0.84'",
+            "rm $PACKAGE_CACHE_DIR/Rectangle.dmg"
+          ]
+        },
+        "uninstall": {
+          "commands": [
+            "rm -rf /Applications/Rectangle.app"
+          ]
+        }
+      }
+    },
+    "linux": {
+      "steps": {
+        "download": {
+          "url": "",
+          "target": ""
+        },
+        "prepare": {
+          "commands": []
+        },
+        "build": {
+          "commands": []
+        },
+        "install": {
+          "commands": []
+        },
+        "cleanup": {
+          "commands": []
+        },
+        "uninstall": {
+          "commands": []
+        }
+      }
+    }
+  },
+  "dependencies": []
 }
