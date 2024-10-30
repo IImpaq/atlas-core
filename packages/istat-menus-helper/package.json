@@ -1,0 +1,64 @@
+{
+  "name": "istat-menus-helper",
+  "version": "latest",
+  "description": "The iStat Menus Helper enables quite a few features in the Mac App Store version of iStat Menus. If you’d like to view temperatures, fan speeds, and view other stats, please download and run the iStat Menus Helper.",
+  "platforms": {
+    "macos": {
+      "steps": {
+        "download": {
+          "url": "https://download.bjango.com/istatmenushelper7/",
+          "target": "$PACKAGE_CACHE_DIR/iStatMenusHelper.zip"
+        },
+        "prepare": {
+          "commands": [
+            "unzip $PACKAGE_CACHE_DIR/iStatMenusHelper.zip -d $PACKAGE_CACHE_DIR"
+          ]
+        },
+        "build": {
+          "commands": []
+        },
+        "install": {
+          "commands": [
+            "open -W $PACKAGE_CACHE_DIR/iStat\\ Menus\\ Helper\\ Installer.app",
+            "echo 'Please continue the installation through the GUI.'"
+          ]
+        },
+        "cleanup": {
+          "commands": [
+            "rm -r $PACKAGE_CACHE_DIR/iStat\\ Menus\\ Helper\\ Installer.app",
+            "rm $PACKAGE_CACHE_DIR/iStatMenusHelper.zip"
+          ]
+        },
+        "uninstall": {
+          "commands": [
+            "echo 'iStatMenusHelper must be uninstalled manually through the GUI.'"
+          ]
+        }
+      }
+    },
+    "linux": {
+      "steps": {
+        "download": {
+          "url": "",
+          "target": ""
+        },
+        "prepare": {
+          "commands": []
+        },
+        "build": {
+          "commands": []
+        },
+        "install": {
+          "commands": []
+        },
+        "cleanup": {
+          "commands": []
+        },
+        "uninstall": {
+          "commands": []
+        }
+      }
+    }
+  },
+  "dependencies": []
+}
